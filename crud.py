@@ -57,7 +57,7 @@ def update_task(db: Session, task_id: str, user_id: str, task: TaskCreate):
         db.commit()
         db.refresh(existing_task)
     except IntegrityError:
-        db.rollback()  # Rollback in case of an error
+        db.rollback()  
         raise ValueError("Error updating task. Title may already be in use.")  # Adjust message as needed
 
     return existing_task
